@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="mSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#090a12" />
+      <stop offset="100%" stop-color="#1d1e2c" />
+    </linearGradient>
+    <linearGradient id="mPoly" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9d4edd" />
+      <stop offset="100%" stop-color="#3c096c" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#mSky)" />
+  <polygon points="300,200 400,420 300,600 200,420" fill="url(#mPoly)" stroke="#c77dff" stroke-width="2" />
+  <polygon points="300,200 300,600 400,420" fill="#ffffff" opacity="0.18" />
+  <circle cx="300" cy="400" r="140" fill="none" stroke="#7b2cbf" stroke-width="1.5" stroke-dasharray="6 6" />
+  <path d="M0,680 L200,620 L400,650 L600,600 L600,800 L0,800 Z" fill="#050508" />
+</svg>

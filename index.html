@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEARS — 3D Spatial Scenery & Parallax Experience</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <meta name="description" content="ZEARS Spatial Lab — Ultra-smooth 60 FPS multi-layer scenery parallax, shooting stars, and interactive 3D WebGL realm.">
+
+  <!-- Modern Studio Typography: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Three.js for Native WebGL Celestial Atmosphere & Shooting Stars -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Dynamic Fluid Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-follow" id="cursorFollow"></div>
+
+  <!-- Film Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Top Progress Bar -->
+  <div class="scroll-progress-line" id="scrollProgress"></div>
+
+  <!-- Studio Header -->
+  <header class="header">
+    <div class="header-left">
+      <a href="#hero" class="brand-link">
+        <span class="brand-glyph">✦</span>
+        <span class="brand-title">ZEARS</span>
+      </a>
+      <span class="brand-sub">SPATIAL LAB • 2025</span>
+    </div>
+
+    <nav class="header-nav">
+      <a href="#hero" class="nav-link active">Scenery 3D</a>
+      <a href="#showcase" class="nav-link">Showcase</a>
+      <a href="#spatial-3d" class="nav-link">3D Monolith</a>
+      <a href="#vision" class="nav-link">Vision</a>
+    </nav>
+
+    <div class="header-right">
+      <!-- Ambient Sound Generator -->
+      <button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient soundscape">
+        <span class="sound-bars">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="sound-text">SOUNDSCAPE</span>
+      </button>
+
+      <!-- Atmosphere Mood Switcher -->
+      <div class="mood-selector">
+        <button class="mood-btn active" data-mood="midnight" title="Midnight Aurora">MIDNIGHT</button>
+        <button class="mood-btn" data-mood="golden" title="Alpine Golden Hour">GOLDEN</button>
+        <button class="mood-btn" data-mood="mist" title="Glacial Dawn">MIST</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       HERO: 8-LAYER RICH SCENERY PARALLAX & METEORS
+       ============================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-sticky-frame">
+      
+      <!-- Alpine Expedition Telemetry HUD -->
+      <div class="telemetry-hud" id="telemetryHud">
+        <div class="hud-item hud-compass">
+          <span class="hud-label">BEARING</span>
+          <span class="hud-value" id="hudBearing">312° NW</span>
+        </div>
+        <div class="hud-divider"></div>
+        <div class="hud-item">
+          <span class="hud-label">ALTITUDE</span>
+          <span class="hud-value" id="hudAltitude">3,842 M</span>
+        </div>
+        <div class="hud-divider"></div>
+        <div class="hud-item">
+          <span class="hud-label">TEMP</span>
+          <span class="hud-value" id="hudTemp">-4°C</span>
+        </div>
+        <div class="hud-divider"></div>
+        <div class="hud-item hud-coords">
+          <span class="hud-label">COORDINATES</span>
+          <span class="hud-value" id="hudCoords">45°50′N 06°51′E</span>
+        </div>
+        <div class="hud-live-dot" title="Live Telemetry Link Active"></div>
+      </div>
+
+      <!-- WebGL Canvas: Cosmic Stars, 3D Moon & Shooting Stars (Bintang Jatuh) -->
+      <canvas id="webglCanvas"></canvas>
+
+      <!-- Multi-Layer Scenery Stack (Lively, Multi-Layered & Vibrant) -->
+      <div class="scenery-container">
+        
+        <!-- Layer 1: Celestial Moon & Aurora Glow -->
+        <div class="scenery-layer layer-sky" data-depth="0.08">
+          <div class="celestial-orb" id="celestialOrb"></div>
+          <div class="aurora-ribbon"></div>
+        </div>
+
+        <!-- Layer 2: Distant Snowy Alpine Massif & Peak Hotspots -->
+        <div class="scenery-layer layer-distant-mountains" data-depth="0.22">
+          <svg class="scenery-svg" viewBox="0 0 1440 600" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="farGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" class="stop-far-1" />
+                <stop offset="100%" class="stop-far-2" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#farGrad)" d="M0,380 L80,270 L190,340 L320,180 L460,320 L590,200 L740,350 L880,160 L1030,310 L1180,190 L1320,330 L1440,250 L1440,600 L0,600 Z"></path>
+            <!-- Snowcap Peaks -->
+            <polygon points="320,180 300,225 340,225" fill="#ffffff" opacity="0.6" />
+            <polygon points="880,160 855,215 905,215" fill="#ffffff" opacity="0.65" />
+            <polygon points="1180,190 1160,235 1200,235" fill="#ffffff" opacity="0.6" />
+          </svg>
+
+          <!-- Interactive Mountain Peak Hotspots -->
+          <div class="peak-hotspot" style="left: 22.2%; top: 30%;" data-peak="0">
+            <div class="hotspot-beacon">
+              <span class="beacon-pulse"></span>
+              <span class="beacon-core">✦</span>
+            </div>
+            <div class="hotspot-card">
+              <span class="hotspot-tag">SUMMIT 01</span>
+              <h4 class="hotspot-title">Mont Blanc Massif</h4>
+              <div class="hotspot-stats">
+                <span>ELEV 4,809 M</span>
+                <span>•</span>
+                <span>TEMP -12°C</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="peak-hotspot" style="left: 61.1%; top: 26.5%;" data-peak="1">
+            <div class="hotspot-beacon">
+              <span class="beacon-pulse"></span>
+              <span class="beacon-core">✦</span>
+            </div>
+            <div class="hotspot-card">
+              <span class="hotspot-tag">SUMMIT 02</span>
+              <h4 class="hotspot-title">Matterhorn Crest</h4>
+              <div class="hotspot-stats">
+                <span>ELEV 4,478 M</span>
+                <span>•</span>
+                <span>TEMP -9°C</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="peak-hotspot" style="left: 81.9%; top: 31.5%;" data-peak="2">
+            <div class="hotspot-beacon">
+              <span class="beacon-pulse"></span>
+              <span class="beacon-core">✦</span>
+            </div>
+            <div class="hotspot-card">
+              <span class="hotspot-tag">SUMMIT 03</span>
+              <h4 class="hotspot-title">Jungfrau Pass</h4>
+              <div class="hotspot-stats">
+                <span>ELEV 4,158 M</span>
+                <span>•</span>
+                <span>TEMP -7°C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer 2.5: Flock of Eagles / Soaring Alpine Birds -->
+        <div class="scenery-layer layer-birds" data-depth="0.32">
+          <div class="flock-container">
+            <svg class="bird bird-1" viewBox="0 0 48 24">
+              <path d="M0,12 Q12,0 24,12 Q36,0 48,12 Q36,6 24,14 Q12,6 0,12 Z" fill="rgba(255,255,255,0.7)" />
+            </svg>
+            <svg class="bird bird-2" viewBox="0 0 48 24">
+              <path d="M0,12 Q12,0 24,12 Q36,0 48,12 Q36,6 24,14 Q12,6 0,12 Z" fill="rgba(255,255,255,0.6)" />
+            </svg>
+            <svg class="bird bird-3" viewBox="0 0 48 24">
+              <path d="M0,12 Q12,0 24,12 Q36,0 48,12 Q36,6 24,14 Q12,6 0,12 Z" fill="rgba(255,255,255,0.5)" />
+            </svg>
+            <svg class="bird bird-4" viewBox="0 0 48 24">
+              <path d="M0,12 Q12,0 24,12 Q36,0 48,12 Q36,6 24,14 Q12,6 0,12 Z" fill="rgba(255,255,255,0.65)" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Layer 3: Midground Jagged Mountain Ridge -->
+        <div class="scenery-layer layer-mid-mountains" data-depth="0.42">
+          <svg class="scenery-svg" viewBox="0 0 1440 600" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="midGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" class="stop-mid-1" />
+                <stop offset="100%" class="stop-mid-2" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#midGrad)" d="M0,420 L130,290 L300,410 L470,240 L640,390 L830,250 L1010,400 L1170,270 L1330,390 L1440,300 L1440,600 L0,600 Z"></path>
+          </svg>
+        </div>
+
+        <!-- Layer 4: Sandwiched 3D Dimensional Typography: ZEARS -->
+        <div class="scenery-layer layer-typography" data-depth="0.60">
+          <div class="hero-editorial">
+            <div class="hero-badge">IMMERSIVE SPATIAL REALM</div>
+            <h1 class="hero-headline">
+              <span class="headline-primary">ZEARS</span>
+              <span class="headline-sub">BEYOND HORIZONS</span>
+            </h1>
+          </div>
+        </div>
+
+        <!-- Layer 5: Rolling Volumetric Mist / Clouds -->
+        <div class="scenery-layer layer-mist" data-depth="0.72">
+          <div class="cloud-mist mist-a"></div>
+          <div class="cloud-mist mist-b"></div>
+        </div>
+
+        <!-- Layer 6: Pine Ridge Forest Canopy -->
+        <div class="scenery-layer layer-forest" data-depth="0.85">
+          <svg class="scenery-svg" viewBox="0 0 1440 500" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="forestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" class="stop-forest-1" />
+                <stop offset="100%" class="stop-forest-2" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#forestGrad)" d="
+              M0,280 
+              L25,240 L35,280 L65,230 L85,280 L115,220 L135,280 L175,210 L205,280 L255,230 L275,280
+              L335,200 L365,280 L415,220 L445,280 L505,190 L535,280 L605,230 L635,280 L695,200
+              L725,280 L785,220 L825,280 L885,180 L915,280 L985,230 L1025,280 L1085,200 L1125,280
+              L1185,220 L1225,280 L1285,190 L1325,280 L1385,230 L1440,280 L1440,500 L0,500 Z
+            "></path>
+          </svg>
+        </div>
+
+        <!-- Layer 7: Foreground Rock Cliff & Lone Wanderer -->
+        <div class="scenery-layer layer-foreground" data-depth="1.05">
+          <svg class="scenery-svg" viewBox="0 0 1440 500" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="fgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" class="stop-fg-1" />
+                <stop offset="100%" class="stop-fg-2" />
+              </linearGradient>
+            </defs>
+            <!-- Rocky Outcrop Cliff -->
+            <path fill="url(#fgGrad)" d="
+              M0,240 
+              C120,230 200,290 320,270 
+              C450,250 540,330 720,310 
+              C900,290 1020,360 1200,300 
+              C1320,260 1390,280 1440,250 
+              L1440,500 L0,500 Z
+            "></path>
+            <!-- Foreground Pine Silhouettes on Flanks -->
+            <polygon fill="url(#fgGrad)" points="40,260 90,60 140,260"></polygon>
+            <polygon fill="url(#fgGrad)" points="60,230 90,100 120,230"></polygon>
+            <polygon fill="url(#fgGrad)" points="120,290 160,120 200,290"></polygon>
+            <polygon fill="url(#fgGrad)" points="1320,270 1370,70 1420,270"></polygon>
+            <polygon fill="url(#fgGrad)" points="1260,310 1300,140 1340,310"></polygon>
+            <!-- Lone Wanderer Standing on Rock Point (720, 310) -->
+            <g fill="url(#fgGrad)">
+              <circle cx="720" cy="285" r="5" />
+              <path d="M714,292 Q720,290 726,292 L724,310 L716,310 Z" />
+              <line x1="727" y1="292" x2="731" y2="310" stroke="#040609" stroke-width="1.8" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-affordance">
+        <div class="scroll-track">
+          <div class="scroll-thumb"></div>
+        </div>
+        <span class="scroll-caption">SCROLL TO EXPLORE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       KINETIC MARQUEE STRIP
+       ============================================== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>✦ ZEARS SPATIAL REALM</span>
+      <span>•</span>
+      <span>MULTI-LAYER SCENERY PARALLAX</span>
+      <span>•</span>
+      <span>SHOOTING STARS METEOR TRAIL</span>
+      <span>•</span>
+      <span>BUTTERY SMOOTH 60 FPS</span>
+      <span>•</span>
+      <span>✦ ZEARS SPATIAL REALM</span>
+      <span>•</span>
+      <span>MULTI-LAYER SCENERY PARALLAX</span>
+      <span>•</span>
+      <span>SHOOTING STARS METEOR TRAIL</span>
+      <span>•</span>
+      <span>BUTTERY SMOOTH 60 FPS</span>
+      <span>•</span>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       SECTION 2: REFINED SHOWCASE REEL (SUPER RINGAN & BERSIH)
+       ============================================== -->
+  <section class="section-showcase" id="showcase">
+    <div class="wrap-wide showcase-meta">
+      <div>
+        <div class="section-tag">SELECTED WORKS</div>
+        <h2 class="showcase-title">Expeditions in Motion</h2>
+      </div>
+      
+      <div class="reel-actions">
+        <button class="reel-btn" id="btnToggleDirection" title="Reverse Stream Direction">⇄ INVERT</button>
+        <button class="reel-btn" id="btnToggleSpeed" title="Cycle Stream Speed">1.0X VELOCITY</button>
+        <span class="reel-hint">DRAG TO SCRUB</span>
+      </div>
+    </div>
+
+    <!-- Single Lightweight High-Performance Infinite Track -->
+    <div class="infinite-lane-container" id="laneContainer">
+      <div class="infinite-lane" id="infiniteLane"></div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 3: INTERACTIVE 3D MONOLITH (RINGAN & KEREN)
+       ============================================== -->
+  <section class="section-spatial-lab" id="spatial-3d">
+    <div class="wrap-wide">
+      <div class="lab-card">
+        <div class="lab-viewport">
+          <canvas id="monolithCanvas"></canvas>
+          <div class="lab-tag-float">INTERACTIVE 3D MONOLITH</div>
+        </div>
+        <div class="lab-content">
+          <div class="section-tag">WEBGL 3D ARTIFACT</div>
+          <h3 class="lab-title">Monolith of Aetheria</h3>
+          <p class="lab-desc">
+            Monolit kristal geometris 3D yang berputar secara mulus di ruang WebGL. Anda dapat menyeret atau memutar objek 3D ini langsung dengan kursor mouse atau layar sentuh.
+          </p>
+          <div class="lab-features">
+            <span class="feat-tag">Native Three.js</span>
+            <span class="feat-tag">Dynamic Lighting</span>
+            <span class="feat-tag">Zero Lag Compositor</span>
+          </div>
+          <p class="lab-hint-text">💡 Klik & geser objek 3D di samping untuk memutarnya bebas 360°</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECTION 4: VISION NARRATIVE
+       ============================================== -->
+  <section class="section-vision" id="vision">
+    <div class="wrap-narrow">
+      <div class="section-tag">PHILOSOPHY</div>
+      <h2 class="vision-title">Where Dimension Meets Fluidity</h2>
+      <p class="vision-text">
+        ZEARS memadukan estetika lanskap alam dengan rekayasa web modern. Setiap elemen bergerak dalam koordinat inersia yang diperhitungkan secara presisi—menghasilkan pengalaman visual yang hidup, berbobot, dan mengalir mulus tanpa membebani perangkat Anda.
+      </p>
+    </div>
+  </section>
+
+  <!-- Modal Detail Viewer -->
+  <aside class="editorial-modal" id="modalView" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-dismiss" id="modalDismiss" aria-label="Close modal">&times;</button>
+      <span class="modal-index" id="modalIndex">EXPEDITION 01</span>
+      <h3 class="modal-title" id="modalTitle">Nordic Glacier</h3>
+      <p class="modal-location" id="modalLocation">SWITZERLAND • 2025</p>
+      <div class="modal-image-wrap" id="modalImageWrap"></div>
+      <p class="modal-text" id="modalText">Deskripsi catatan lapangan ekspedisi pegunungan es.</p>
+      <div class="modal-details-grid" id="modalGrid"></div>
+    </div>
+  </aside>
+
+  <!-- Minimal Editorial Footer -->
+  <footer class="footer">
+    <div class="wrap-wide footer-inner">
+      <div class="footer-left">
+        <span class="brand-glyph">✦</span>
+        <span class="brand-title">ZEARS</span>
+        <span class="footer-copy">— SPATIAL CRAFT & KINETIC PARALLAX • ALL RIGHTS RESERVED</span>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="footer-link">RETURN TO TOP ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Native Tactile Audio Elements (Instant Response) -->
+  <audio id="audioWind" src="assets/audio/ambient-wind.wav" loop preload="auto"></audio>
+  <audio id="audioDrone" src="assets/audio/celestial-drone.wav" loop preload="auto"></audio>
+  <audio id="audioHover" src="assets/audio/ui-hover.wav" preload="auto"></audio>
+  <audio id="audioClick" src="assets/audio/ui-click.wav" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

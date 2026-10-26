@@ -1,0 +1,125 @@
+{
+  "project": "ZEARS Spatial Experience",
+  "version": "2.4.0",
+  "telemetryDefaults": {
+    "bearing": "312° NW",
+    "altitude": "3,842 M",
+    "temperature": "-4°C",
+    "windSpeed": "14 KT",
+    "coordinates": "45°50'01\"N 06°51'54\"E"
+  },
+  "peakHotspots": [
+    {
+      "id": "peak-mont-blanc",
+      "name": "Mont Blanc Massif",
+      "elevation": "4,809 M",
+      "xPercent": 22.5,
+      "yPercent": 30.5,
+      "temp": "-12°C",
+      "status": "Glacial Ridge",
+      "notes": "Puncak tertinggi pegunungan Alpen berselimut salju abadi."
+    },
+    {
+      "id": "peak-matterhorn",
+      "name": "Matterhorn Crest",
+      "elevation": "4,478 M",
+      "xPercent": 61.2,
+      "yPercent": 27,
+      "temp": "-9°C",
+      "status": "Granite Pyramid",
+      "notes": "Piramida batu granit terjal dengan hembusan angin glasial 22 knot."
+    },
+    {
+      "id": "peak-jungfrau",
+      "name": "Jungfrau Pass",
+      "elevation": "4,158 M",
+      "xPercent": 82,
+      "yPercent": 32,
+      "temp": "-7°C",
+      "status": "Alpine Col",
+      "notes": "Lembah es terpanjang di Eropa dengan fenomena cahaya bintang jernih."
+    }
+  ],
+  "expeditions": [
+    {
+      "id": "01",
+      "title": "Nordic Glacier",
+      "category": "GLACIAL LAB",
+      "location": "SWITZERLAND • 2025",
+      "coords": "46.5° N, 8.0° E",
+      "image": "assets/images/card-glacier.svg",
+      "tag": "GLACIER",
+      "desc": "Menjelajahi ceruk es biru purba dengan refleksi kristal WebGL.",
+      "specs": {
+        "Elevation": "3,842 M",
+        "IceDepth": "850 M",
+        "Route": "North Ridge",
+        "Risk": "Moderate"
+      }
+    },
+    {
+      "id": "02",
+      "title": "Aurora Borealis",
+      "category": "CELESTIAL LAB",
+      "location": "TROMSØ • 2025",
+      "coords": "69.6° N, 18.9° E",
+      "image": "assets/images/card-aurora.svg",
+      "tag": "ATMOSPHERE",
+      "desc": "Pita cahaya magnetik aurora meliuk di langit malam kutub utara.",
+      "specs": {
+        "Latitude": "69.6° N",
+        "Radiation": "0.12 μSv",
+        "KpIndex": "6.4 Storm",
+        "Visibility": "Optimal"
+      }
+    },
+    {
+      "id": "03",
+      "title": "Monolith of Aetheria",
+      "category": "SPATIAL ARTIFACT",
+      "location": "ALTIPLANO • 2025",
+      "coords": "22.3° S, 67.5° W",
+      "image": "assets/images/card-monolith.svg",
+      "tag": "3D ARTIFACT",
+      "desc": "Monolit kristal geometris 3D yang berotasi bebas dalam gravitasi nol.",
+      "specs": {
+        "Geometry": "Octahedron",
+        "Shader": "Specular PBR",
+        "Rotation": "360° Free",
+        "FPS": "60.0 Lock"
+      }
+    },
+    {
+      "id": "04",
+      "title": "Obsidian Ridge",
+      "category": "VOLCANIC TRAIL",
+      "location": "ICELAND • 2025",
+      "coords": "64.1° N, 21.9° W",
+      "image": "assets/images/card-ridge.svg",
+      "tag": "TOPOGRAPHY",
+      "desc": "Punggung tebing batuan beku vulkanik yang membelah samudera awan.",
+      "specs": {
+        "RockType": "Basalt/Pumice",
+        "Incline": "48° Angle",
+        "Wind": "28 Knots",
+        "Terrain": "Class 4"
+      }
+    },
+    {
+      "id": "05",
+      "title": "Stellar Horizon",
+      "category": "DEEP SPACE LAB",
+      "location": "ATACAMA • 2025",
+      "coords": "24.6° S, 70.4° W",
+      "image": "assets/images/card-stellar.svg",
+      "tag": "COSMOS",
+      "desc": "Kubah langit paling jernih di bumi dengan hujan meteor periodik.",
+      "specs": {
+        "Seeing": "0.45 Arcsec",
+        "Humidity": "4%",
+        "StarPool": "500 Points",
+        "Meteors": "Dynamic"
+      }
+    }
+  ]
+}

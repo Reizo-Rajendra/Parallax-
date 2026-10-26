@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="aSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#020810" />
+      <stop offset="100%" stop-color="#081826" />
+    </linearGradient>
+    <linearGradient id="aGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff87" stop-opacity="0" />
+      <stop offset="50%" stop-color="#60efff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00ff87" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#aSky)" />
+  <path d="M-50,280 C150,160 300,340 650,200 L650,420 C400,520 200,380 -50,480 Z" fill="url(#aGlow)" filter="blur(25px)" />
+  <path d="M0,520 L160,380 L320,490 L480,360 L600,430 L600,800 L0,800 Z" fill="#05121e" />
+  <path d="M0,630 L220,530 L420,620 L600,510 L600,800 L0,800 Z" fill="#020810" />
+</svg>

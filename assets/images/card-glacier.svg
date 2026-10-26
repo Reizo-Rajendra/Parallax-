@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="gSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#08101a" />
+      <stop offset="60%" stop-color="#0c2338" />
+      <stop offset="100%" stop-color="#19486a" />
+    </linearGradient>
+    <linearGradient id="gIce" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#90e0ef" />
+      <stop offset="100%" stop-color="#0077b6" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#gSky)" />
+  <circle cx="300" cy="220" r="70" fill="#ffffff" opacity="0.85" filter="blur(8px)" />
+  <circle cx="300" cy="220" r="65" fill="#f0f8ff" />
+  <path d="M0,450 L120,320 L240,410 L350,260 L460,370 L600,290 L600,800 L0,800 Z" fill="#0b1b2b" />
+  <polygon points="350,260 330,310 370,310" fill="#ffffff" opacity="0.8" />
+  <path d="M0,560 L180,440 L380,590 L500,470 L600,530 L600,800 L0,800 Z" fill="url(#gIce)" opacity="0.75" />
+  <path d="M0,660 L240,540 L400,640 L600,560 L600,800 L0,800 Z" fill="#040910" />
+</svg>

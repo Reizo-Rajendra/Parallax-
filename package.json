@@ -1,0 +1,24 @@
+{
+  "name": "zears-spatial-parallax",
+  "version": "2.4.0",
+  "description": "ZEARS — Ultra-Smooth 60 FPS Multi-Layer 3D Scenery Parallax & Interactive WebGL Realm",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node serve.js",
+    "build:assets": "node generate-assets.js",
+    "test": "node -c script.js && node -c serve.js"
+  },
+  "keywords": [
+    "threejs",
+    "webgl",
+    "parallax-scrolling",
+    "scenery-animation",
+    "60fps",
+    "spatial-ui",
+    "audio-synth",
+    "creative-development"
+  ],
+  "author": "ZEARS Spatial Studio",
+  "license": "MIT"
+}

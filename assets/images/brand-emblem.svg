@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="embGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="54" fill="none" stroke="url(#embGrad)" stroke-width="1.5" stroke-dasharray="4 4" />
+  <circle cx="60" cy="60" r="42" fill="#080e18" stroke="#1d2e46" stroke-width="1.5" />
+  <polygon points="60,28 70,52 94,60 70,68 60,92 50,68 26,60 50,52" fill="url(#embGrad)" />
+  <circle cx="60" cy="60" r="4" fill="#ffffff" />
+</svg>
